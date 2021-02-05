@@ -1,8 +1,8 @@
 function get_info_on_var(variable) {
     var rel_meta = meta_data.find(function (d) {
-        return d.Variabele == variable;
+        return d.Variabele === variable;
     })
-
+    console.log(rel_meta, variable)
     var label = rel_meta['Label_1'];
     var definition = rel_meta['Definition'];
 
@@ -152,15 +152,15 @@ function createNewChart() {
 
 
     let new_bar = bars.append("rect")
-        .transition()
-        .delay(function (d, i) {
-            return i * 100;
-        })
-        .duration(1000)
-        .ease(d3.easeExpIn)
-        .attr("y", function (d) {
-            return height - yScale(d.value);
-        })
+        // .transition()
+        // .delay(function (d, i) {
+        //     return i * 100;
+        // })
+        // .duration(1000)
+        // .ease(d3.easeExpIn)
+        // .attr("y", function (d) {
+        //     return height - yScale(d.value);
+        // })
         .attr("class", "bar")
         .attr("x", function (d) {
             return x(d.key)
@@ -179,7 +179,6 @@ function createNewChart() {
         var info = get_info_on_var(x_var);
         var label = info[0]
         var definition = info[1];
-
         displayTooltip("<b>Variable: </b>" + label + "<br /><b>Percentage: </b>" +
             value + "%<br /><b>Explanation: </b>" + definition)
 
